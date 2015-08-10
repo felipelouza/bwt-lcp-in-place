@@ -35,8 +35,8 @@ int main(int argc, char** argv){
 	char* copy = (char*) malloc((n+1)*sizeof(char));
 	strcpy(copy, T);	
 
-	int *lcp = (int*) malloc(n*sizeof(int));
-	for(i=0; i<n;i++) lcp[i]=0;
+	int *lcp = (int*) malloc((n+1)*sizeof(int));
+	for(i=0; i<n+1;i++) lcp[i]=0;
 
 	/**/
 	bwt_lcp_inplace(T, n, lcp);

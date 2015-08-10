@@ -1,9 +1,9 @@
 CC = gcc
 CFLAGS += -Wall 
-CFLAGS += -g -O0
+#CFLAGS += -g -O0
 CFLAGS += -Wno-char-subscripts 
 CFLAGS += -Wpointer-sign
-#CFLAGS += -D_FILE_OFFSET_BITS=64 -m64 -O3 fomit-frame-pointer
+CFLAGS += -D_FILE_OFFSET_BITS=64 -m64 -O3 -fomit-frame-pointer
 
 LFLAGS = -lm -lrt
 
@@ -30,4 +30,4 @@ run:
 	./main $(DIR) $(INPUT)
 
 valgrind:
-	valgrind --tool=memcheck --leak-check=full --track-origins=yes ./main dataset/ $(INPUT)
+	valgrind --tool=memcheck --leak-check=full --track-origins=yes ./main $(DIR) $(INPUT)
