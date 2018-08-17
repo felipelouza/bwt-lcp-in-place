@@ -39,10 +39,11 @@ int main(int argc, char** argv){
 	for(i=0; i<n+1;i++) lcp[i]=0;
 
 	/**/
-	bwt_lcp_inplace(T, n, lcp);
-	printf("bwt(T):\n%s\n\n", T);
+//	bwt_lcp_inplace(T, n, lcp);
+//	printf("bwt(T):\n%s\n\n", T);
 	/**/
 
+/*
 	#if DEBUG		
 		printf("lcp:\n");
 		print_int(lcp, n);
@@ -56,13 +57,26 @@ int main(int argc, char** argv){
 	int *sa = (int*) malloc(n*sizeof(int));
 	divsufsort((const unsigned char*)copy, sa, n);//Yuta_Mori
 	lcp_check(copy, sa, n, lcp);
+*/
+
+
+printf("\nLA\n");
+
+	int *LA = (int*) malloc(n*sizeof(int));
+	for(i=0; i<n;i++) LA[i]=0;
+	
+	bwt_lyndon_inplace(T, n, LA);
+
+	printf("i\tBWT\tLA\n");
+	for(i=0; i<n;i++) printf("%d\t%c\t%d\n", i, T[i], LA[i]);
 
 	//free memory
 	free(T);
 	free(copy);
-	free(rev);
+//	free(rev);
 	free(lcp);
-	free(sa);
+	free(LA);
+//	free(sa);
 
 	file_close(f_in);
 

@@ -91,6 +91,31 @@ int bwt_inplace(char *T, int n){
 
 return 0;
 }
+
+/*******************************************************************/
+
+int bwt_lyndon_inplace(char *T, int n, int *LA){
+
+	int p, r=1;
+	int i, s;
+
+	LA[n-1]=LA[n-2]=1;
+
+	for(s=n-3; s>=0; s--){
+
+		p = r+1;//	p = find_sentinel(&T[s]);
+		r = rank(&T[s+1], T[s], p);
+	
+		T[p+s] = T[s]; //replace('$', T[s]);
+
+		for(i=s; i<s+r; i++) 
+			T[i] = T[i+1];
+
+		T[s+r] = END_MARKER;
+	}
+
+return 0;
+}
 /*******************************************************************/
 
 char* bwt_reverse(char *bwt, int n){

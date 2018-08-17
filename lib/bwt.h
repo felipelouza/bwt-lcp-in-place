@@ -15,6 +15,8 @@ int bwt_lcp_inplace(char *T, int n, int *LCP);
 
 int bwt_inplace(char *T, int n);
 
+int bwt_lyndon_inplace(char *T, int n, int *LA);
+
 char* bwt_reverse(char *T, int n);
 
 

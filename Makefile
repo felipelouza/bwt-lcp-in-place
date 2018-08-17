@@ -24,7 +24,7 @@ clean:
 	\rm *.o ${LIB}/*.o -v
 
 compile: main.c ${LIBOBJ} 
-	$(CC) $(CFLAGS) $(LFLAGS) -o main main.c ${LIBOBJ}
+	$(CC)  -o main main.c ${LIBOBJ} $(CFLAGS) $(LFLAGS)
 
 run:
 	./main $(DIR) $(INPUT)
